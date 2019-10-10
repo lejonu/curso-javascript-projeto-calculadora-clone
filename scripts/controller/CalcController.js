@@ -12,6 +12,12 @@ class CalcController
         this.initialize();
     }
 
+    initButtonsEvents()
+    {
+       let buttons = document.querySelectorAll("#buttons > g, #parts >  g");
+    }
+
+    
     initialize()
     {
         this.setDisplayDateTime();
