@@ -13,6 +13,15 @@ class CalcController
         this.initButtonsEvents();
     }
 
+    addEventListenerAll(element, events, fn)
+    {
+        // transforma a string em array e aplica o forEach em cada elemento
+        events.split(' ').forEach( event => 
+        {
+            element.addEventListener( event, fn, false);
+        });
+    }
+
     initButtonsEvents()
     {
        let buttons = document.querySelectorAll("#buttons > g, #parts >  g");
@@ -20,9 +29,14 @@ class CalcController
        // adiciona o evento para cada item da lista
        buttons.forEach( ( btn, index ) => 
        {
-            btn.addEventListener( "click", e => 
+            this.addEventListenerAll( btn, "click drag", e => 
             {
                 console.log(btn.className.baseVal.replace("btn-", ""));
+            });
+
+            this.addEventListenerAll( btn, "mouseover mouseup mousedown", e => 
+            {
+                btn.style.cursor = "pointer";
             });
        });
     }
