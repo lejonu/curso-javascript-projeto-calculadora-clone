@@ -10,13 +10,22 @@ class CalcController
 
         // inicializa automaticamente através do construtor
         this.initialize();
+        this.initButtonsEvents();
     }
 
     initButtonsEvents()
     {
        let buttons = document.querySelectorAll("#buttons > g, #parts >  g");
-    }
 
+       // adiciona o evento para cada item da lista
+       buttons.forEach( ( btn, index ) => 
+       {
+            btn.addEventListener( "click", e => 
+            {
+                console.log(btn.className.baseVal.replace("btn-", ""));
+            });
+       });
+    }
     
     initialize()
     {
